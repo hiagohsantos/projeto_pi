@@ -1,0 +1,377 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: rgb(35, 35, 35);
+    flex-direction: column;
+}
+
+.container {
+    background: rgb(35, 35, 35);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+}
+
+.container .dadosAtuais {
+    padding-top: 80px;
+    position: sticky;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+
+}
+
+.ultimaAtualizacao {
+    margin: 20px;
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 40px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.8em;
+    background: #2a2a2a;
+    align-items: center;
+    border-radius: 20px 20px 20px 20px;
+    flex-direction: row;
+}
+
+.ultimaAtualizacao #proxLeitura {
+
+align-content: flex-end;
+
+}
+
+.container .graficos {
+    margin-bottom: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: #2a2a2a;
+    border-radius: 20px;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.container .nPontos {
+
+    position: absolute;
+    align-self: flex-end;
+
+}
+
+.container .graficoUmi {
+    margin-bottom: 50px;
+    position: relative;
+    width: 90%;
+    background: #2a2a2a;
+}
+
+.container .graficoTemp {
+    margin-bottom: 50px;
+    position: relative;
+    width: 90%;
+    background: #2a2a2a;
+
+}
+
+.container .graficos p {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1.5em;
+    text-transform: uppercase;
+
+}
+
+.container .card {
+    border-radius: 20px;
+    position: relative;
+    width: 220px;
+    height: 450px;
+    background: #2a2a2a;
+    display: flex;
+    justify-content: center;
+    align-items: initial;
+    flex-direction: column;
+
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    background: #2a2a2a;
+    z-index: 20;
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
+    border-radius: 0 0 20px 20px;
+
+}
+.historicoTabela{
+    background: #2a2a2a;
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 500px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+
+.footer {
+    position: relative;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    background: #2a2a2a;
+    border-radius: 20px 20px 0 0;
+}
+
+.container .card .nomeCard {
+
+    width: 220px;
+    height: 50px;
+    display: flex;
+    align-items: initial;
+    justify-content: center;
+
+}
+
+.container .card .topCard {
+
+    width: 220px;
+    height: 200px;
+    display: flex;
+    align-items: initial;
+    justify-content: center;
+
+}
+
+.container .card .bottomCard {
+    width: 220px;
+    height: 200px;
+    display: flex;
+    align-items: initial;
+    justify-content: center;
+}
+
+.container .card .percent {
+    position: relative;
+    width: 150px;
+    height: 150px;
+}
+
+.container .card .percent svg {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    transform: rotate(270deg);
+}
+
+.container .card .percent svg circle {
+
+    width: 100%;
+    height: 100%;
+    fill: transparent;
+    stroke-width: 2;
+    stroke: #191919;
+    transform: translate(5px, 5px);
+
+}
+
+.container .card .percent svg circle:nth-child(2) {
+    stroke: var(--clr);
+    stroke-dasharray: 440;
+    stroke-dashoffset: calc(440 - (440*var(--num))/100);
+    animation: fadeIn 1s linear forwards;
+    animation-delay: 2.5s;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.dot {
+    position: absolute;
+    inset: 5px;
+    z-index: 10;
+
+    animation: animateDot 2s linear forwards;
+}
+
+@keyframes animateDot {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(calc(3.6deg * var(--num)));
+    }
+}
+
+
+.dot::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--clr);
+    box-shadow: 0 0 10px var(--clr), 0 0 30px var(--clr);
+}
+
+.number {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    animation: fadeIn 1s linear forwards;
+    animation-delay: 1.5s;
+    opacity: 0;
+}
+
+.number h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 2.5em;
+}
+
+.number h2 span {
+    font-weight: 300;
+    color: rgb(57, 232, 139);
+    font-size: 0.5em;
+}
+
+.number p {
+
+    font-weight: 300;
+    font-size: 0.75em;
+    letter-spacing: 2px;
+    margin-top: 5px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.sensorName {
+
+    font-weight: 500;
+    font-size: 1em;
+    letter-spacing: 1.5px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+nav {
+    display: flex;
+    background: #2a2a2a;
+    justify-content: center;
+    align-items: center;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 15px;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-top: 15px;
+    text-transform: uppercase;
+    display: block;
+    height: 50px;
+
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+
+}
+
+nav a:hover {
+    background: rgba(162, 28, 131, 0.3);
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.nPontos {
+    display: flex;
+    overflow: hidden;
+}
+
+.nPontos input {
+    position: absolute !important;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    width: 1px;
+    border: 0;
+    overflow: hidden;
+}
+
+.nPontos label {
+    background-color: #525252;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    line-height: 1;
+    text-align: center;
+    padding: 8px 16px;
+    margin-right: -1px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    transition: 0.2s ease-in;
+    letter-spacing: 2px;
+    font-weight: 300;
+    font-size: 0.5em;
+}
+
+.nPontos label:hover {
+    cursor: pointer;
+    background: rgba(206, 205, 205, 0.3);
+}
+
+.nPontos input:checked+label {
+    background-color: #7b7b7b;
+    box-shadow: none;
+}
+
+.nPontos label:first-of-type {
+    border-radius: 4px 0 0 4px;
+}
+
+.nPontos label:last-of-type {
+    border-radius: 0 4px 4px 0;
+}

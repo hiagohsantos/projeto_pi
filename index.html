@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>WebPagePI</title>
+
+    <link rel="stylesheet" href="./styles.css" />
+    <script
+      type="module"
+      src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.0.0/firebase-app.js"
+    ></script>
+
+    <script
+      type="module"
+      src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.0.0/firebase-auth.js"
+    ></script>
+    <script
+      type="module"
+      src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.0.0/firebase-database.js"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"
+      integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script type="module" src="./index.js"></script>
+  </head>
+
+  <body>
+    <div class="header">
+      <nav>
+        <ul>
+          <li><a href="#dadosInstantaneos">Home</a></li>
+          <li><a href="#graf">Gráficos</a></li>
+          <li><a href="#tabela">Histórico</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="container">
+      <div class="dadosAtuais" id="dadosInstantaneos">
+        <div class="card">
+          <div class="nomeCard">
+            <h2 class="sensorName">LAB 401</h2>
+          </div>
+
+          <div class="topCard">
+            <div id="uS1" class="percent">
+              <div class="dot"></div>
+              <svg>
+                <circle cx="70" cy="70" r="70"></circle>
+                <circle cx="70" cy="70" r="70"></circle>
+              </svg>
+              <div class="number">
+                <h2 id="umidade1">0</h2>
+                <p>Umidade</p>
+              </div>
+            </div>
+          </div>
+          <div class="bottomCard">
+            <div id="tS1" class="percent">
+              <div class="dot"></div>
+              <svg>
+                <circle cx="70" cy="70" r="70"></circle>
+                <circle cx="70" cy="70" r="70"></circle>
+              </svg>
+              <div class="number">
+                <h2 id="temperatura1">0</h2>
+                <p>Temperatura</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="nomeCard">
+            <h2 class="sensorName">LAB 402</h2>
+          </div>
+          <div class="topCard">
+            <div id="uS2" class="percent">
+              <div class="dot"></div>
+              <svg>
+                <circle cx="70" cy="70" r="70"></circle>
+                <circle cx="70" cy="70" r="70"></circle>
+              </svg>
+              <div class="number">
+                <h2 id="umidade2">0</h2>
+                <p>Umidade</p>
+              </div>
+            </div>
+          </div>
+          <div class="bottomCard">
+            <div id="tS2" class="percent">
+              <div class="dot"></div>
+              <svg>
+                <circle cx="70" cy="70" r="70"></circle>
+                <circle cx="70" cy="70" r="70"></circle>
+              </svg>
+              <div class="number">
+                <h2 id="temperatura2">0</h2>
+                <p>Temperatura</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="nomeCard">
+            <h2 class="sensorName">LAB 403</h2>
+          </div>
+          <div class="topCard">
+            <div id="uS3" class="percent">
+              <div class="dot"></div>
+              <svg>
+                <circle cx="70" cy="70" r="70"></circle>
+                <circle cx="70" cy="70" r="70"></circle>
+              </svg>
+              <div class="number">
+                <h2 id="umidade3">0</h2>
+                <p>Umidade</p>
+              </div>
+            </div>
+          </div>
+          <div class="bottomCard">
+            <div id="tS3" class="percent">
+              <div class="dot"></div>
+              <svg>
+                <circle cx="70" cy="70" r="70"></circle>
+                <circle cx="70" cy="70" r="70"></circle>
+              </svg>
+              <div class="number">
+                <h2 id="temperatura3">0</h2>
+                <p>Temperatura</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="nomeCard">
+            <h2 class="sensorName">LAB 404</h2>
+          </div>
+          <div class="topCard">
+            <div id="uS4" class="percent">
+              <div class="dot"></div>
+              <svg>
+                <circle cx="70" cy="70" r="70"></circle>
+                <circle cx="70" cy="70" r="70"></circle>
+              </svg>
+              <div class="number">
+                <h2 id="umidade4">0</h2>
+                <p>Umidade</p>
+              </div>
+            </div>
+          </div>
+          <div class="bottomCard">
+            <div id="tS4" class="percent">
+              <div class="dot"></div>
+              <svg>
+                <circle cx="70" cy="70" r="70"></circle>
+                <circle cx="70" cy="70" r="70"></circle>
+              </svg>
+              <div class="number">
+                <h2 id="temperatura4">0</h2>
+                <p>Temperatura</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="nomeCard">
+            <h2 class="sensorName">LAB 405</h2>
+          </div>
+          <div class="topCard">
+            <div id="uS5" class="percent">
+              <div class="dot"></div>
+              <svg>
+                <circle cx="70" cy="70" r="70"></circle>
+                <circle cx="70" cy="70" r="70"></circle>
+              </svg>
+              <div class="number">
+                <h2 id="umidade5">0</h2>
+                <p>Umidade</p>
+              </div>
+            </div>
+          </div>
+          <div class="bottomCard">
+            <div id="tS5" class="percent">
+              <div class="dot"></div>
+              <svg>
+                <circle cx="70" cy="70" r="70"></circle>
+                <circle cx="70" cy="70" r="70"></circle>
+              </svg>
+              <div class="number">
+                <h2 id="temperatura5">0</h2>
+                <p>Temperatura</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ultimaAtualizacao">
+        <h2 id="ultimoDado"></h2>
+        <div id="proxLeitura"></div>
+      </div>
+
+      <div class="graficos" id="graf">
+        <p id="tituloGrafico">Gráfico de Umidade</p>
+
+        <p class="nPontos">
+          <input
+            type="radio"
+            id="radio-three"
+            name="numPontos"
+            value="1"
+            checked
+          />
+          <label for="radio-three">12H</label>
+          <input
+            type="radio"
+            id="radio-four"
+            name="numPontos"
+            value="2"
+          />
+          <label for="radio-four">24H</label>
+          <input
+            type="radio"
+            id="radio-five"
+            name="numPontos"
+            value="3"
+          />
+          <label for="radio-five">7D</label>
+        </p>
+
+        <div class="graficoUmi">
+          <canvas class="graficoUmidade"></canvas>
+        </div>
+        <p id="tituloGrafico">Gráfico de Temperatura</p>
+        <div class="graficoTemp">
+          <canvas class="graficoTemperatura"></canvas>
+        </div>
+      </div>
+
+      <div class="historicoTabela" id="tabela"></div>
+
+      <div class="footer"></div>
+    </div>
+  </body>
+</html>
