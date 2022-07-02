@@ -279,8 +279,8 @@ align-content: flex-end;
 .number p {
 
     font-weight: 300;
-    font-size: 0.75em;
-    letter-spacing: 1px;
+    font-size: 0.7em;
+    letter-spacing: 5px;
     margin-top: 5px;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.75);
