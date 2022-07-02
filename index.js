@@ -39,7 +39,7 @@ window.onload = function () {
       let pathBase = uid + '/' + timeStamp + '/';
 
       document.getElementById('ultimoDado').innerHTML =
-        'Ultima Atualização: ' +
+        '  Ultima Atualização: ' +
         data.getDate() +
         '/' +
         (data.getMonth() + 1) +
