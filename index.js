@@ -52,8 +52,7 @@ window.onload = function () {
         ':' +
         data.getSeconds();
 
-      document.getElementById('proxLeitura').innerHTML =
-        'Proxima Atualização: ';
+
       db.ref(pathBase + 'TempL401').on('value', (snapshot) => {
         document.getElementById('temperatura1').innerHTML =
           snapshot.val() + '°C'; // Muda o valor da temperatura1 (LAB401) no HTML
