@@ -280,7 +280,7 @@ align-content: flex-end;
 
     font-weight: 300;
     font-size: 0.75em;
-    letter-spacing: 5px;
+    letter-spacing: 1px;
     margin-top: 5px;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.75);
