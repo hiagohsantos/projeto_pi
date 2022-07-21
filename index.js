@@ -244,6 +244,24 @@ window.onload = function () {
       },
     },
   });
+  
+  function movingAvg(array, countBefore, countAfter) {
+          if (countAfter == undefined) countAfter = 0;
+          const result = [];
+          for (let i = 0; i < array.length; i++) {
+            const subArr = array.slice(
+              Math.max(i - countBefore, 0),
+              Math.min(i + countAfter + 1, array.length)
+            );
+            const avg =
+              subArr.reduce((a, b) => a + (isNaN(b) ? 0 : b), 0) /
+              subArr.length;
+            result.push(avg);
+          }
+          return result;
+        }
+  
+  
   function atualizaGrafico(nPontos) {
     // Funçao para atualizar a quantidade de pontos do grafico
     db.ref(uid)
@@ -305,17 +323,17 @@ window.onload = function () {
           arrUL405.push(childSnapshot.val().UmidL405);
         });
 
-        graficoTemperatura.data.datasets[0].data = arrTL401; // Muda os valores dos dados no grafico de Temperatura
-        graficoTemperatura.data.datasets[1].data = arrTL402;
-        graficoTemperatura.data.datasets[2].data = arrTL403;
-        graficoTemperatura.data.datasets[3].data = arrTL404;
-        graficoTemperatura.data.datasets[4].data = arrTL405;
+        graficoTemperatura.data.datasets[0].data = movingAvg(arrTL401,3,3); // Muda os valores dos dados no grafico de Temperatura
+        graficoTemperatura.data.datasets[1].data = movingAvg(arrTL402,3,3);
+        graficoTemperatura.data.datasets[2].data = movingAvg(arrTL403,3,3);
+        graficoTemperatura.data.datasets[3].data = movingAvg(arrTL404,3,3);
+        graficoTemperatura.data.datasets[4].data = movingAvg(arrTL405,3,3);
 
-        graficoUmidade.data.datasets[0].data = arrUL401; // Muda os valores dos dados no grafico de Umidade
-        graficoUmidade.data.datasets[1].data = arrUL402;
-        graficoUmidade.data.datasets[2].data = arrUL403;
-        graficoUmidade.data.datasets[3].data = arrUL404;
-        graficoUmidade.data.datasets[4].data = arrUL405;
+        graficoUmidade.data.datasets[0].data = movingAvg(arrUL401,3,3); // Muda os valores dos dados no grafico de Umidade
+        graficoUmidade.data.datasets[1].data = movingAvg(arrUL402,3,3);
+        graficoUmidade.data.datasets[2].data = movingAvg(arrUL403,3,3);
+        graficoUmidade.data.datasets[3].data = movingAvg(arrUL404,3,3);
+        graficoUmidade.data.datasets[4].data = movingAvg(arrUL405,3,3);
 
         graficoTemperatura.data.labels = datas; // Muda os valores das datas no grafico de Temperatura
         graficoUmidade.data.labels = datas; // Muda os valores das datas no grafico de Umidade
