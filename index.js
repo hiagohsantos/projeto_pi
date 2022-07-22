@@ -255,7 +255,7 @@ window.onload = function () {
             );
             const avg =
               subArr.reduce((a, b) => a + (isNaN(b) ? 0 : b), 0) /
-              (subArr.filter(b => b !== 0 || !isNaN(b)).length);
+              (subArr.filter(b => b !== 0 && !isNaN(b)).length);
             result.push(avg);
           }
           return result;
