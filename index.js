@@ -178,7 +178,7 @@ window.onload = function () {
         },
       },
       scales: {
-        y: {},
+        y: {beginAtZero: true},
       },
     },
   });
@@ -240,7 +240,7 @@ window.onload = function () {
         },
       },
       scales: {
-        y: {},
+        y: {beginAtZero: true},
       },
     },
   });
